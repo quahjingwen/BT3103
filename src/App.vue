@@ -1,6 +1,6 @@
 <template>
-  <div id="show-modules">
-    <profile-page></profile-page>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -8,8 +8,8 @@
 import HelloWorld from './components/HelloWorld'
 // import {db} from "@/firebase.js"
 import {seRef} from '@/firebase.js'
-import searchModules from './components/searchModules'
-import ProfilePage from './components/ProfilePage'
+import searchModules from './components/searchModules.vue'
+import ProfilePage from './components/ProfilePage.vue'
 
 export default {
   name: 'App',
@@ -23,7 +23,7 @@ export default {
   },
   data () {
     return {
-      search: ""
+      search: ''
     }
   },
   computed: {
@@ -31,8 +31,7 @@ export default {
       return this.modules.filter((module) => {
         return module[".key"].match(this.search.toUpperCase());
       })
-    },
-    
+    }
   }
 }
 </script>

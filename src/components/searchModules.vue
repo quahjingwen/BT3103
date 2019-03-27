@@ -2,8 +2,11 @@
   <div id="show-modules">
     <h1>NUS Modules</h1>
     <input type= "text" v-model="search" placeholder="search modules"/>
-    <div v-for="module in filteredModules" class="single-module">
-      <h2>{{module[".key"]}} {{module[".value"]}}</h2>
+    <div v-for="module in filteredModules" class="single-module"> 
+      <!-- <router-link to="/module/\+module[.key]"><h2>{{module[".key"]}} </h2></router-link> -->
+      <!-- <router-link :to="{ name: 'SingleModule', params: {id: {{module.key}}  }"><h2>{{module[".key"]}} </h2></router-link> -->
+      <router-link :to="'/module/'+module['.key']"> <h2>{{ module[".key"] }} </h2> </router-link>
+      <h2>{{module[".value"]}}</h2>
       <article>module description</article>
     </div>
   </div>
@@ -24,7 +27,8 @@ export default {
   },
   data () {
     return {
-      search: ''
+      search: '',
+      test: 123
     }
   },
   computed: {
