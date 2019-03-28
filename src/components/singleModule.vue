@@ -18,6 +18,7 @@ export default {
     methods: {
         async fetchData(){
             console.log("fetch bank statements");
+            // await fetch("https://bt3103-e32c6.firebaseio.com/se_df/data/0/" + this.id +".json")
             await fetch("https://bt3103-e32c6.firebaseio.com/se_df/data/0/" + this.id +".json")
             .then(response => response.json())
             .then((data)=>(

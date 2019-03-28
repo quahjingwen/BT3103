@@ -29,31 +29,162 @@
               <li>List B: {{listB}} Modules</li>
               <li>List C: {{listC}} Modules</li>
             </ul>
-            <p><b>&#x25a2; Industrial Attachment: </b> {{ iaDone }}</p>
+            <p><b>&#x25a2; Industrial Attachment: </b> {{this.student.GradReq.Attachment.Done}}MCS/12MCS </p>
             <ul id="example-1">
-              <li>BT4101: {{bt4101Done}} </li>
-              <li>List A: {{listA}} Modules</li>
-              <li>List B: {{listB}} Modules</li>
-              <li>List C: {{listC}} Modules</li>
+              <li>{{iaDone}}</li>
+              </ul>
+              <p>Attachment Programmes Available (click for more details):</p>
+              <ul id="example-1">
+              <li><a href="https://www.comp.nus.edu.sg/studentlife/intern/atap/student/">Advanced Technology Attachment Programme (ATAP)</a></li>
+              <li><a href="https://www.comp.nus.edu.sg/studentlife/intern/iip/student/">Industry Attachment Programme (IIP)</a></li>
             </ul>
             <h3><u>Degree Requirements</u></h3>
             <div class="card">
-              <div class="card-header"><h3>Degree Requirements List</h3></div>
+              <div class="card-header"><h3>Summary of degree requirements for BSc (Business Analytics)</h3></div>
               <div class="card-body">
+                <p><b>Grand Total: 160 MCS</b></p>
+                <p> <u>1. University Level Requirements: Subtotal 20 MCS </u></p>
                 <table class="table table-striped">
                   <thead>
                     <tr>
                       <th>Module Code</th>
-                      <th>Done</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="module in student.GradReq">
-                      <td>{{ module['.values']}}</td>
-                      <td>{{ module}}</td>
+                    <tr v-for="(value,key) in student.GradReq.GEM">
+                      <td>{{ key }}</td>
+                      <td>{{completed(value)}}</td>
+                      <td>{{moreMC(key)}}</td>
                     </tr>
                   </tbody>
                 </table>
+                <p> <u>2. Programme Requirements: Subtotal 108 MCS </u></p>
+                <p>2a. Core Modules: Subtotal 72 MCS</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(value,key) in student.GradReq.Core">
+                      <td>{{ key }}</td>
+                      <td>{{completed(value)}}</td>
+                      <td>{{moreMC(key)}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>2b. Programme Electives: Subtotal 24 MCS</p>
+                <p><b>Option 1:</b></p>
+                <p>Choose 6 modules to make up 24 MCs from Lists A, B and C, with at least 2 modules each from List A and List B. 5 of 6 modules must be at level-4000. </p>
+                <p><b>Option 2:</b></p>
+                <p>Choose BT4101 (B.Sc. Dissertation) and 3 modules to make up 24 MCs from Lists A, B and C, with at least 1 module each from List A and List B. 2 of 3 modules must be at level-4000.</p>
+                
+                <p>BT4101</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <td>BT4101</td>
+                      <td>{{completed(this.student.GradReq.ElecOpt.BT4101)}}</td>
+                      <td>12</td>
+                  </tbody>
+                </table>
+                
+                <p>List A</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(value,key) in student.GradReq.ElecOpt.A">
+                      <td>{{ key }}</td>
+                      <td>{{completed(value)}}</td>
+                      <td>{{moreMC(key)}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>List B</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(value,key) in student.GradReq.ElecOpt.B">
+                      <td>{{ key }}</td>
+                      <td>{{completed(value)}}</td>
+                      <td>{{moreMC(key)}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>List C</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(value,key) in student.GradReq.ElecOpt.C">
+                      <td>{{ key }}</td>
+                      <td>{{completed(value)}}</td>
+                      <td>{{moreMC(key)}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>2c. IS4010 Industry Internship Programme </p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <td>IS4010</td>
+                      <td>{{completed(this.student.GradReq.Attachment)}}</td>
+                      <td>12</td>
+                  </tbody>
+                </table>
+                <p> <u>3. Unrestricted Electives: Subtotal 32 MCS </u></p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Module Code</th>
+                      <th>Completed</th>
+                      <th>Modular Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <td>UE</td>
+                      <td>{{completed(sumUE)}}</td>
+                      <td>{{ sumUE*4 }}MCs/{{Object.keys(this.student.GradReq.UEM).length*4}}MCs</td>
+                  </tbody>
+                </table>
+
               </div>
             </div>
 
@@ -94,6 +225,27 @@ export default {
           "UEM":{"UEM1":0,"UEM2":0,"UEM3":0,"UEM4":0,"UEM5":0,"UEM6":0,"UEM7":0,"UEM8":0},
           "Level1":{"GEH":0,"GEQ":1,"GER":1,"GES":0,"GET":0,"BT1101":1,"CS1010S":1,"CS1020":1,"EC1301":1,"IS1103/X":0,"MA1101R":1,"MA1521":1,"MKT1705X":1,"mod1":0,"mod2":0}
         }
+      }
+    }
+  },
+  methods: {
+    completed: function(value) {
+      if (value ==1) {
+        return "Completed";
+      }
+      else if (value ==32) {
+        return "Completed";
+      }
+      else {
+        return "Uncomplete"
+      }
+    },
+    moreMC: function(key) {
+      if (key=="BT4103") {
+        return 8
+      }
+      else {
+        return 4
       }
     }
   },
@@ -241,7 +393,7 @@ export default {
         }
       }
       return countable
-    }
+    },
   }
 }
 </script>
@@ -291,7 +443,6 @@ export default {
 }
 
 .green-column {
-    height: 1000px;
     background-color: #EAEAEA;
     margin: 20px;
     width: 750px;

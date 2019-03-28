@@ -4,7 +4,7 @@ import singleModule from "./components/singleModule.vue";
 
 export default [
   {
-    path: '/',
+    path: '/profilePage',
     component: ProfilePage
   },
   {
