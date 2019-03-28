@@ -74,9 +74,6 @@ export default {
   components: {
     HelloWorld
   },
-  firebase: {
-    modules: seRef
-  },
   data () {
     return {
       student: {

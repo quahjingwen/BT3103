@@ -9,9 +9,6 @@
 //import {seRef} from '@/firebase.js'
 
 export default {
-    firebase: {
-        modules: seRef
-    },
     data () {
         return {
             id: this.$route.params.id,
