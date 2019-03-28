@@ -49,7 +49,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="module in student.GradReq">
-                      <td>{{ module}}</td>
+                      <td>{{ module['.values']}}</td>
                       <td>{{ module}}</td>
                     </tr>
                   </tbody>
@@ -67,7 +67,7 @@
 <script>
 import HelloWorld from './HelloWorld'
 // import {db} from "@/firebase.js"
-import {seRef} from '@/firebase.js'
+//import {seRef} from '@/firebase.js'
 
 export default {
   name: 'searchModules',

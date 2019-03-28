@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {seRef} from '@/firebase.js'
+//import {seRef} from '@/firebase.js'
 
 export default {
     firebase: {

@@ -7,7 +7,8 @@
 <script>
 import HelloWorld from './components/HelloWorld'
 // import {db} from "@/firebase.js"
-import {seRef} from '@/firebase.js'
+// import {seRef} from '@/firebase.js'
+import {modsInfo} from '@/firebase.js'
 import searchModules from './components/searchModules.vue'
 import ProfilePage from './components/ProfilePage.vue'
 
@@ -19,7 +20,8 @@ export default {
     'profile-page': ProfilePage
   },
   firebase: {
-    modules: seRef
+    // modules: seRef
+    modules: modsInfo
   },
   data () {
     return {
@@ -29,7 +31,8 @@ export default {
   computed: {
     filteredModules: function() {
       return this.modules.filter((module) => {
-        return module[".key"].match(this.search.toUpperCase());
+        // return module[".key"].match(this.search.toUpperCase())
+        ;
       })
     }
   }
