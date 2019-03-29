@@ -1,6 +1,6 @@
 <template>
   <div id="show-modules">
-    <h1>NUS Modules</h1>
+    <h1>Search NUS Modules</h1>
     <input type= "text" v-model="search" placeholder="search modules"/>
     <div v-for="module in filteredModules" :key="module.id" class="single-module">
       <!--  <router-link :to="'/module/'+module['.key']"> <h2>{{ module[".key"] }} </h2> </router-link> -->
@@ -89,10 +89,6 @@ export default {
   background: #eee;
 }
 
-#p-right {
-  text-align: right;
-}
-
 table {
     width: 100%;
 }
@@ -111,5 +107,18 @@ td {
 .copy, .p-right {
     white-space: nowrap;
 }
+
+input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
 </style>
 

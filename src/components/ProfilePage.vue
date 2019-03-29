@@ -43,6 +43,7 @@
               <div class="card-header"><h3>Summary of degree requirements for BSc (Business Analytics)</h3></div>
               <div class="card-body">
                 <p><b>Grand Total: 160 MCS</b></p>
+                <p>*Highlight rows in green represent completion of module</p>
                 <p> <u>1. University Level Requirements: Subtotal 20 MCS </u></p>
                 <table class="table table-striped">
                   <thead>
@@ -53,9 +54,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value,key) in student.GradReq.GEM">
+                    <tr v-for="(value,key) in student.GradReq.GEM" :class="{'text-complete': completed(value) === 'Completed' }">
                       <td>{{ key }}</td>
-                      <td>{{completed(value)}}</td>
+                      <td >{{completed(value)}}</td>
                       <td>{{moreMC(key)}}</td>
                     </tr>
                   </tbody>
@@ -71,7 +72,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value,key) in student.GradReq.Core">
+                    <tr v-for="(value,key) in student.GradReq.Core" :class="{'text-complete': completed(value) === 'Completed'}">
                       <td>{{ key }}</td>
                       <td>{{completed(value)}}</td>
                       <td>{{moreMC(key)}}</td>
@@ -95,7 +96,7 @@
                   </thead>
                   <tbody>
                       <td>BT4101</td>
-                      <td>{{completed(this.student.GradReq.ElecOpt.BT4101)}}</td>
+                      <td :class="{'text-complete': completed(this.student.GradReq.ElecOpt.BT4101) === 'Completed'}">{{completed(this.student.GradReq.ElecOpt.BT4101)}}</td>
                       <td>12</td>
                   </tbody>
                 </table>
@@ -110,7 +111,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value,key) in student.GradReq.ElecOpt.A">
+                    <tr v-for="(value,key) in student.GradReq.ElecOpt.A" :class="{'text-complete': completed(value) === 'Completed'}">
                       <td>{{ key }}</td>
                       <td>{{completed(value)}}</td>
                       <td>{{moreMC(key)}}</td>
@@ -128,7 +129,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value,key) in student.GradReq.ElecOpt.B">
+                    <tr v-for="(value,key) in student.GradReq.ElecOpt.B" :class="{'text-complete': completed(value) === 'Completed'}">
                       <td>{{ key }}</td>
                       <td>{{completed(value)}}</td>
                       <td>{{moreMC(key)}}</td>
@@ -146,7 +147,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(value,key) in student.GradReq.ElecOpt.C">
+                    <tr v-for="(value,key) in student.GradReq.ElecOpt.C" :class="{'text-complete': completed(value) === 'Completed'}">
                       <td>{{ key }}</td>
                       <td>{{completed(value)}}</td>
                       <td>{{moreMC(key)}}</td>
@@ -165,7 +166,7 @@
                   </thead>
                   <tbody>
                       <td>IS4010</td>
-                      <td>{{completed(this.student.GradReq.Attachment)}}</td>
+                      <td :class="{'text-complete': completed(this.student.GradReq.Attachment) === 'Completed'}">{{completed(this.student.GradReq.Attachment)}}</td>
                       <td>12</td>
                   </tbody>
                 </table>
@@ -180,7 +181,7 @@
                   </thead>
                   <tbody>
                       <td>UE</td>
-                      <td>{{completed(sumUE)}}</td>
+                      <td :class="{'text-complete': completed(sumUE) === 'Completed'}">{{completed(sumUE)}}</td>
                       <td>{{ sumUE*4 }}MCs/{{Object.keys(this.student.GradReq.UEM).length*4}}MCs</td>
                   </tbody>
                 </table>
@@ -519,4 +520,7 @@ tfoot tr:last-child td:last-child {
   border-bottom-right-radius: 5px;
 } 
 
+.text-complete {
+    background-color: #66ff00 !important;
+  }
 </style>
