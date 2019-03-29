@@ -237,7 +237,7 @@ export default {
         return "Completed";
       }
       else {
-        return "Uncomplete"
+        return "Incomplete"
       }
     },
     moreMC: function(key) {

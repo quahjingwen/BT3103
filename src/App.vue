@@ -11,13 +11,15 @@ import HelloWorld from './components/HelloWorld'
 import {modsInfo} from '@/firebase.js'
 import searchModules from './components/searchModules.vue'
 import ProfilePage from './components/ProfilePage.vue'
+import Recommendations from './components/Recommendations.vue'
 
 export default {
   name: 'App',
   components: {
     'hello-world': HelloWorld,
     'search-modules': searchModules,
-    'profile-page': ProfilePage
+    'profile-page': ProfilePage,
+    'recommendations': Recommendations
   },
   firebase: {
     // modules: seRef
